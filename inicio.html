@@ -1,0 +1,414 @@
+<html>
+ <head>
+  <title>
+   BeatFlow
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2b0a0a;
+            color: white;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #3b0e0e;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li i {
+            margin-right: 10px;
+        }
+        .sidebar ul li img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+        .header .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .header .search-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background-color: #4b1e1e;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 0 20px;
+        }
+        .header .search-bar input {
+            border: none;
+            background: none;
+            color: white;
+            flex: 1;
+            margin-left: 10px;
+        }
+        .header .search-bar input:focus {
+            outline: none;
+        }
+        .header .user-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            margin-bottom: 10px;
+        }
+        .popular-artists, .popular-albums {
+            display: flex;
+            overflow-x: auto;
+        }
+        .popular-artists img, .popular-albums img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .popular-albums img {
+            border-radius: 10px;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3b0e0e;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 0;
+            width: calc(100% - 250px);
+            box-sizing: border-box;
+        }
+        .footer .controls {
+            display: flex;
+            align-items: center;
+        }
+        .footer .controls i {
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .footer .progress {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        .footer .progress input[type="range"] {
+            flex: 1;
+            margin: 0 10px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #fff;
+            height: 5px;
+            border-radius: 5px;
+        }
+        .footer .progress input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #ff0000;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .footer .progress input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #ff0000;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .footer .volume {
+            display: flex;
+            align-items: center;
+        }
+ .footer .volume i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .footer .volume input[type="range"] {
+            width: 100px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #fff;
+            height: 5px;
+            border-radius: 5px;
+        }
+        .footer .volume input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #ff0000;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .footer .volume input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #ff0000;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="sidebar">
+    <h2>
+     BeatFlow
+    </h2>
+    <ul>
+     <li>
+      <i class="fas fa-home">
+      </i>
+      Home
+     </li>
+     <li>
+      <i class="fas fa-search">
+      </i>
+      Search
+     </li>
+     <li>
+      <i class="fas fa-book">
+      </i>
+      Your Library
+     </li>
+    </ul>
+    <h2>
+     Biblioteca
+    </h2>
+    <ul>
+     <li>
+      <i class="fas fa-music">
+      </i>
+      Playlists
+     </li>
+     <li>
+      <i class="fas fa-album">
+      </i>
+      Albums
+     </li>
+    </ul>
+    <ul>
+     <li>
+      <img alt="Reggae" height="30" src="https://storage.googleapis.com/a1aa/image/y8WCPihsBCbqJNMaC7eis2HVpqVeVGxbgYCypBpkhwwcWYjTA.jpg" width="30"/>
+      Reggae
+     </li>
+     <li>
+      <img alt="Funk" height="30" src="https://storage.googleapis.com/a1aa/image/lMVB5APIBYLmDNNeyWcEG7EgJf2yk7U1WDJvnEfQwveAahNOB.jpg" width="30"/>
+      Funk
+     </li>
+     <li>
+      <img alt="Relíquias" height="30" src="https://storage.googleapis.com/a1aa/image/wLoSpzCftZ0VWaXK2Q3eJKMYDEstaiXyY0RAlTNhBU3fswGnA.jpg" width="30"/>
+      Relíquias
+     </li>
+     <li>
+      <img alt="4M" height="30" src="https://storage.googleapis.com/a1aa/image/uFyAHEBxKS67NBwyBuDCFnkG1zRjB9GZLmBzXYQN9y6jF24E.jpg" width="30"/>
+      4M
+     </li>
+     <li>
+      <img alt="Pop" height="30" src="https://storage.googleapis.com/a1aa/image/hlrxNM1E097mLNL6yklEA0LZcjFzfXb3fbLU3pDLtp0XWYjTA.jpg" width="30"/>
+      Pop
+     </li>
+    </ul>
+    <div class="current-song">
+     <img alt="Tendenciosa" height="50" src="https://storage.googleapis.com/a1aa/image/6eS6Va6Q3fvt8E20ZKEZP3Aun1EmeK3umscA4izNVJFiswGnA.jpg" width="50"/>
+     <div>
+      <p>
+       Tendenciosa
+      </p>
+      <p>
+       MC Kevinho, MC Kekel
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="main-content">
+    <div class="header">
+     <div class="logo">
+      <img alt="BeatFlow Logo" height="40" src="https://storage.googleapis.com/a1aa/image/jnV1ClGgvWLMPd1DLeB8GjrJBeAeg68wBx7ySJXDsw3lswGnA.jpg" width="40"/>
+      <h1>
+       BeatFlow
+      </h1>
+     </div>
+     <div class="search-bar">
+      <i class="fas fa-search">
+      </i>
+      <input placeholder="Search" type="text"/>
+     </div>
+     <div class="user-icon">
+      <img alt="User  Icon" height="40" src="https://storage.googleapis.com/a1aa/image/kf7U0DqtQFQyXKw8WTbNL19B2bzKJmVdD3ycMyYMaOiJLsxJA.jpg" width="40"/>
+     </div>
+    </div>
+    <div class="section">
+     <h3>
+      Artistas populares
+     </h3>
+     <div class="popular-artists">
+      <img alt="Artist 1" height="100" src="https://storage.googleapis.com/a1aa/image/e8ZBiBgvjmXUQaMJIqZmNxj0N1IoioMlkH3pYV7cqSFNLsxJA.jpg" width="100"/>
+      <img alt="Artist 2" height="100" src="https://storage.googleapis.com/a1aa/image/ec8JL0dzPKW4dKZQF4u5TjN0Q2ANzliuFVUR0zvXb5TGLsxJA.jpg" width="100"/>
+      <img alt="Artist 3" height="100" src="https://storage.googleapis.com/a1aa/image/iBLwUzf3V6XJek8RklHzvXchdfEz46YsijlIkTAOx016swGnA.jpg" width="100"/>
+      <img alt="Artist 4" height="100" src="https://storage.googleapis.com/a1aa/image/97Vq4TkuFJZDKRsivIQ97Eeub3kcWz13fPtX1eJQzyUUswGnA.jpg" width="100"/>
+      <img alt="Artist 5" height="100" src="https://storage.googleapis.com/a1aa/image/1Le5E1MaOmROQq5EjON1CYDSzz3oKERCZq2v4BjLCi8KLsxJA.jpg" width="100"/>
+     </div>
+    </div>
+    <div class="section">
+     <h3>
+      Albuns populares
+     </h3>
+     <div class="popular-albums">
+      <img alt="Album 1" height="100" src="https://storage.googleapis.com/a1aa/image/I4GzGiMbGvaOJBJ5AfbL5Tu26byneZ2IvhKgKH6UUyqLWYjTA.jpg" width="100"/>
+      <img alt="Album 2" height="100" src="https://storage.googleapis.com/a1aa/image/D7LnPTncndYOJxoYQvJvrIql7bdHIfBTjzENQkduDCEELsxJA.jpg" width="100"/>
+      <img alt="Album 3" height="100" src="https://storage.googleapis.com/a1aa/image/UBUaydlV11JRKBH9aJw6GXOLofjaXKccTl6SLetuiw1OWYjTA.jpg" width="100"/>
+      <img alt="Album 4" height="100" src="https://storage.googleapis.com/a1aa/image/CdR0eg0wNGXRBiiGEcNZedKa3gaveczXb3UmrFKTRPHsswGnA.jpg" width="100"/>
+      <img alt="Album 5" height="100" src="https://storage.googleapis.com/a1aa/image/0OgnaedBmUXcDaFWW4HrI9oXHVufZFlEdJ6Y2fRFSgbyswGnA.jpg" width="100"/>
+     </div>
+    </div>
+    <div class="section">
+     <h3>
+      Músicas cadastradas
+     </h3>
+     <div id="musicas-cadastradas">
+     </div>
+    </div>
+    <div class="section">
+     <h3>
+      Cadastrar música
+     </h3>
+     <form id="form-cadastrar-musica">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo"><br><br>
+      <label for="artista">Artista:</label>
+      <input type="text" id="artista" name="artista"><br><br>
+      <label for="genero">Gênero:</label>
+      <input type="text" id="genero" name="genero"><br><br>
+      <label for=" duracao">Duração:</label>
+      <input type="text" id="duracao" name="duracao"><br><br>
+      <button type="submit">Cadastrar</button>
+     </form>
+    </div>
+   </div>
+  </div>
+  <div class="footer">
+   <div class="controls">
+    <i class="fas fa-step-backward">
+    </i>
+    <i class="fas fa-play">
+    </i>
+    <i class="fas fa-step-forward">
+    </i>
+   </div>
+   <div class="progress">
+    <span>
+     0:00
+    </span>
+    <input max="100" min="0" type="range" value="0"/>
+    <span>
+     3:15
+    </span>
+   </div>
+   <div class="volume">
+    <i class="fas fa-volume-up">
+    </i>
+    <input max="100" min="0" type="range" value="50"/>
+   </div>
+  </div>
+  <script>
+   function cadastrarMusica(titulo, artista, genero, duracao) {
+    let musicas = JSON.parse(localStorage.getItem('musicas'));
+    if (!musicas) {
+     musicas = [];
+    }
+    musicas.push({
+     titulo: titulo,
+     artista: artista,
+     genero: genero,
+     duracao: duracao
+    });
+    localStorage.setItem('musicas', JSON.stringify(musicas));
+   }
+   
+   function exibirMusicas() {
+ let musicas = JSON.parse(localStorage.getItem('musicas'));
+ if (musicas) {
+  let html = '';
+  musicas.forEach((musica, index) => {
+   html += `
+    <div>
+     <h4>${musica.titulo}</h4>
+     <p>Artista: ${musica.artista}</p>
+     <p>Gênero: ${musica.genero}</p>
+     <p>Duração: ${musica.duracao}</p>
+     <button class="excluir-musica" data-index="${index}">Excluir</button>
+    </div>
+   `;
+  });
+  document.getElementById('musicas-cadastradas').innerHTML = html;
+  
+  // Adicionar evento de clique ao botão de exclusão
+  document.querySelectorAll('.excluir-musica').forEach(button => {
+   button.addEventListener('click', function() {
+    let index = this.getAttribute('data-index');
+    let musicas = JSON.parse(localStorage.getItem('musicas'));
+    musicas.splice(index, 1);
+    localStorage.setItem('musicas', JSON.stringify(musicas));
+    exibirMusicas();
+   });
+  });
+ }
+}
+   
+   document.getElementById('form-cadastrar-musica').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let titulo = document.getElementById('titulo').value;
+    let artista = document.getElementById('artista').value;
+    let genero = document.getElementById('genero').value;
+    let duracao = document.getElementById('duracao').value;
+    cadastrarMusica(titulo, artista, genero, duracao);
+    exibirMusicas();
+   });
+   
+   exibirMusicas();
+  </script>
+ </body>
+</html>
